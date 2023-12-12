@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.db.models import Q
+import json
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ from django.db.models import Q
 
 # For SQL MODEL
 def index(request):
-    datas = SQLSMData.objects.all()
+    datas = SQLSMData.objects.all().order_by('date')
     query = ""
     if request.method == "POST":
         if "add" in request.POST:
@@ -79,9 +80,18 @@ def index(request):
 
 
 
+    # Extracting and formatting data for the chart
+    # sorted_dates = [data.date for data in datas]
+    sorted_dates = [data.date.strftime('%Y-%m-%d') for data in datas]  # Convert date objects to strings
+    close_values = [float(data.close) for data in datas]
+    # volume_values = [int(data.volume.replace(',', '')) for data in datas]
 
-
-    context = {"datas": datas, "query":query}
+    # Remove commas from the string representation of volume (if it's a string)
+    volume_values = [int(str(data.volume).replace(',', '')) if isinstance(data.volume, str) else int(data.volume) for
+                     data in datas]
+    context = {"datas": datas, "query":query, 'sorted_dates': json.dumps(sorted_dates),
+                                                'close_values': json.dumps(close_values),
+                                                'volume_values': json.dumps(volume_values)}
     # datas = SQLSMData.objects.all()[:10]
 
 
