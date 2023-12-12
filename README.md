@@ -42,5 +42,3 @@ This project aimed to build a basic web application using Python and Django for 
 ## Conclusion
 
 This project was a significant learning experience, demonstrating adaptability in learning new technologies and leveraging existing programming skills to create a functional web application. It highlighted challenges in integrating different technologies while emphasizing the importance of clean code and efficient problem-solving.
-
-Feel free to tailor this README according to your specific experiences and project outcomes.
