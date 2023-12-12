@@ -1,6 +1,6 @@
 # JanataWifiTask
 ## URL: [Visit the Janata WiFi website](http://dip008.pythonanywhere.com/)
-## N.B: Find the codes and other files on the "sqlModel" and the "jsonModel" branches.
+### Note: Find the codes and other files on the "sqlModel" and the "jsonModel" branches.
 
 # Project Overview
 
