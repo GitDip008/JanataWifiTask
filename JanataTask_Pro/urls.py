@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from JanataApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('JanataApp.urls')),
+    # path('data/', include('JanataApp.urls')), #N
 ]
